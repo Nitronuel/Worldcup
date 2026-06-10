@@ -164,7 +164,6 @@
       white-space: nowrap;
     }
 
-    .brand-ball,
     .mini-ball {
       display: inline-grid;
       place-items: center;
@@ -174,11 +173,6 @@
         radial-gradient(circle at 50% 48%, #161004 0 17%, transparent 18%),
         conic-gradient(from 18deg, #f4b925 0 14%, #714200 14% 23%, #ffe27a 23% 36%, #1b1304 36% 43%, #f7c739 43% 62%, #684008 62% 74%, #ffd653 74% 100%);
       box-shadow: 0 0 26px rgb(255 193 36 / 0.62);
-    }
-
-    .brand-ball {
-      width: 27px;
-      border: 1px solid rgb(255 238 156 / 0.72);
     }
 
     .mini-ball {
@@ -257,35 +251,20 @@
       transform: translateY(-1px);
     }
 
+    .telegram-mark,
+    .x-mark {
+      display: block;
+      width: 19px;
+      aspect-ratio: 1;
+      background: currentColor;
+    }
+
     .telegram-mark {
-      width: 0;
-      height: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-left: 16px solid currentColor;
-      transform: rotate(-24deg);
+      clip-path: path("M18.9 2.2 16.1 17c-.2 1.1-.8 1.4-1.7.9l-4.6-3.4-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L4.4 11 0 9.6c-1-.3-1-.9.2-1.3L17.4 1.7c.8-.3 1.5.2 1.5.5Z");
     }
 
     .x-mark {
-      position: relative;
-      width: 15px;
-      height: 15px;
-    }
-
-    .x-mark::before,
-    .x-mark::after {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 0;
-      width: 2px;
-      height: 16px;
-      background: currentColor;
-      transform: rotate(45deg);
-    }
-
-    .x-mark::after {
-      transform: rotate(-45deg);
+      clip-path: path("M14.9 1.5h2.9l-6.4 7.3 7.5 9.8H13l-4.6-6-5.3 6H.2L7 10.8 0 1.5h6l4.1 5.5 4.8-5.5Zm-1 15.4h1.6L5.1 3.1H3.4l10.5 13.8Z");
     }
 
     .menu-toggle {
@@ -807,19 +786,25 @@
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--line);
-      overflow: hidden;
+      gap: clamp(14px, 2vw, 22px);
     }
 
     .stat-card {
+      position: relative;
       min-height: 156px;
       padding: clamp(20px, 3vw, 28px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       background:
         radial-gradient(circle at 50% 0%, rgb(255 198 51 / 0.11), transparent 72%),
         var(--panel-strong);
+      overflow: hidden;
+    }
+
+    .stat-card strong,
+    .stat-card span {
+      position: relative;
+      z-index: 1;
     }
 
     .stat-card strong {
@@ -906,8 +891,7 @@
 
     .reason-card,
     .proof-card,
-    .token-card,
-    .faq-item {
+    .token-card {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background:
@@ -934,8 +918,7 @@
     }
 
     .reason-card h3,
-    .proof-card h3,
-    .faq-item h3 {
+    .proof-card h3 {
       margin: 0;
       color: #fff1c6;
       font-family: var(--font-comic);
@@ -945,8 +928,7 @@
     }
 
     .reason-card p,
-    .proof-card p,
-    .faq-item p {
+    .proof-card p {
       margin: 8px 0 0;
       color: #c9bd9d;
       font-family: var(--font-body);
@@ -976,39 +958,20 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background:
-        radial-gradient(circle at 50% 18%, rgb(255 229 124 / 0.44), transparent 10rem),
-        radial-gradient(circle at 50% 60%, rgb(255 198 51 / 0.14), transparent 18rem),
-        #050503;
+        linear-gradient(180deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.28)),
+        url("resources/fans image.png");
+      background-size: cover;
+      background-position: center;
     }
 
     .trophy-panel::before {
       content: "";
       position: absolute;
-      top: 44px;
-      left: 50%;
-      width: 230px;
-      height: 420px;
-      transform: translateX(-50%);
-      border-radius: 46% 46% 18% 18%;
+      inset: 0;
       background:
-        radial-gradient(circle at 50% 16%, #fff3a5 0 6%, transparent 7%),
-        radial-gradient(circle at 50% 26%, #ffd94c 0 18%, #9c5c04 35%, transparent 36%),
-        linear-gradient(90deg, transparent 0 34%, #ffc744 35% 65%, transparent 66%),
-        linear-gradient(180deg, transparent 0 61%, #a76a08 62% 75%, transparent 76%);
-      filter: drop-shadow(0 0 40px rgb(255 198 51 / 0.62));
-    }
-
-    .trophy-panel::after {
-      content: "ROAD TO GLORY";
-      position: absolute;
-      right: 0;
-      bottom: 22px;
-      left: 0;
-      color: rgb(255 244 212 / 0.08);
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 8vw, 7rem);
-      line-height: 0.85;
-      text-align: center;
+        radial-gradient(circle at 50% 36%, transparent 0 46%, rgb(0 0 0 / 0.28) 100%);
+      box-shadow: inset 0 0 0 1px rgb(255 198 51 / 0.08);
+      pointer-events: none;
     }
 
     .narrative-lines {
@@ -1077,43 +1040,12 @@
 
     .proof-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
     }
 
     .proof-card {
       padding: 24px;
-    }
-
-    .proof-card.big {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 0.8fr 1fr;
-      gap: 22px;
-      align-items: center;
-      background:
-        radial-gradient(circle at 15% 25%, rgb(37 199 99 / 0.14), transparent 15rem),
-        radial-gradient(circle at 80% 0%, rgb(255 198 51 / 0.16), transparent 16rem),
-        var(--panel-strong);
-    }
-
-    .ath {
-      display: grid;
-      gap: 8px;
-    }
-
-    .ath strong {
-      color: var(--gold);
-      font-family: var(--font-display);
-      font-size: clamp(3.2rem, 6vw, 5.6rem);
-      line-height: 0.9;
-    }
-
-    .ath span {
-      color: #e8d9ad;
-      font-family: var(--font-comic);
-      font-weight: 900;
-      text-transform: uppercase;
     }
 
     .token-arena {
@@ -1176,11 +1108,6 @@
       letter-spacing: 0.02em;
       line-height: 0.8;
       white-space: nowrap;
-    }
-
-    .supply-board .mini-ball {
-      width: 54px;
-      border: 1px solid rgb(255 238 156 / 0.5);
     }
 
     .supply-board strong {
@@ -1365,9 +1292,19 @@
       align-items: flex-start;
       gap: 10px;
       color: #e9dfc3;
+      line-height: 1.36;
+    }
+
+    .phase-card li {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.58;
+    }
+
+    .fan-list li {
       font-family: var(--font-comic);
       font-weight: 800;
-      line-height: 1.36;
     }
 
     .phase-card li::before,
@@ -1467,16 +1404,6 @@
       transform: translateY(-1px);
     }
 
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .faq-item {
-      padding: 22px;
-    }
-
     .final-cta {
       position: relative;
       z-index: 4;
@@ -1551,10 +1478,6 @@
       .roadmap-grid,
       .culture-grid {
         grid-template-columns: 1fr;
-      }
-
-      .proof-card.big {
-        grid-column: auto;
       }
 
       .token-arena {
@@ -1666,9 +1589,6 @@
         min-height: 420px;
       }
 
-      .proof-card.big {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 680px) {
@@ -1679,7 +1599,6 @@
       .hero-actions,
       .countdown-row,
       .social-grid,
-      .faq-grid,
       .stats-grid,
       .tax-board,
       .token-play-grid {
@@ -1755,7 +1674,7 @@
     <header class="site-header">
       <nav class="nav container" aria-label="Primary navigation">
         <a class="brand" href="#home" aria-label="$FIFA26 home">
-          <span>$FIFA</span><span class="brand-ball" aria-hidden="true"></span><span>26</span>
+          <span>$FIFA</span><span>26</span>
         </a>
 
         <input class="menu-toggle" id="menu-toggle" type="checkbox">
@@ -1766,14 +1685,13 @@
           <a href="#team">Team</a>
           <a href="#tokenomics">Tokenomics</a>
           <a href="#roadmap">Roadmap</a>
-          <a href="#faq">FAQ</a>
         </div>
 
         <div class="header-actions">
-          <a class="icon-btn" href="https://t.me/" aria-label="Open Telegram">
+          <a class="icon-btn" href="https://t.me/FIFA26BNB" aria-label="Open Telegram">
             <span class="telegram-mark" aria-hidden="true"></span>
           </a>
-          <a class="icon-btn" href="https://x.com/" aria-label="Open X">
+          <a class="icon-btn" href="https://x.com/FIFA26_TOKEN" aria-label="Open X">
             <span class="x-mark" aria-hidden="true"></span>
           </a>
           <a class="btn small" href="#buy">Buy $FIFA26</a>
@@ -1983,24 +1901,6 @@
       </div>
 
       <div class="proof-grid">
-        <article class="proof-card big">
-          <div class="ath">
-            <strong>3000x</strong>
-            <span>$BEZO previous project</span>
-          </div>
-          <div>
-            <h3>$8M ATH market cap</h3>
-            <p>A previous run gave the team live experience across community growth, visibility pushes, and market momentum.</p>
-          </div>
-        </article>
-        <article class="proof-card">
-          <div class="ath">
-            <strong>1300x</strong>
-            <span>$LILY previous project</span>
-          </div>
-          <h3>$6.5M ATH market cap</h3>
-          <p>The playbook now returns with a larger football story and a louder audience.</p>
-        </article>
         <article class="proof-card">
           <h3>KOL campaigns secured</h3>
           <p>Creator reach, social pushes, and community coordination are prepared before the main whistle.</p>
@@ -2024,7 +1924,6 @@
       <div class="token-arena">
         <article class="supply-board">
           <div>
-            <span class="mini-ball" aria-hidden="true"></span>
             <strong>1B</strong>
             <span>Total Supply</span>
             <p>1,000,000,000 $FIFA26 tokens ready for the road to glory.</p>
@@ -2132,45 +2031,12 @@
           <li>Push $FIFA26 under one global banner.</li>
         </ul>
         <div class="social-grid">
-          <a class="social-tile" href="https://t.me/">Telegram</a>
-          <a class="social-tile" href="https://x.com/">X</a>
+          <a class="social-tile" href="https://t.me/FIFA26BNB">Telegram</a>
+          <a class="social-tile" href="https://x.com/FIFA26_TOKEN">X</a>
           <a class="social-tile" href="#buy">Buy</a>
           <a class="social-tile" href="#tokenomics">Chart</a>
         </div>
       </aside>
-    </div>
-  </section>
-
-  <section id="faq" class="section compact">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">FAQ</span>
-        <h2 class="section-title display">Before Kickoff</h2>
-        <p class="section-copy">Quick answers for new supporters joining the stand.</p>
-      </div>
-
-      <div class="faq-grid">
-        <article class="faq-item">
-          <h3>Is $FIFA26 official?</h3>
-          <p>No. $FIFA26 is an independent community meme coin and has no affiliation with FIFA or any official tournament organizer.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What is $FIFA26?</h3>
-          <p>$FIFA26 is a football meme coin community built around the road to the 2026 World Cup.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What makes the narrative strong?</h3>
-          <p>The World Cup attention cycle grows through qualifiers, rivalries, national pride, and global headlines.</p>
-        </article>
-        <article class="faq-item">
-          <h3>What is the token supply?</h3>
-          <p>Total supply is 1,000,000,000 $FIFA26 tokens.</p>
-        </article>
-        <article class="faq-item">
-          <h3>How does the community grow?</h3>
-          <p>KOL campaigns, football influencer partnerships, social media expansion, competitions, and countdown events.</p>
-        </article>
-      </div>
     </div>
   </section>
 
@@ -2179,8 +2045,8 @@
       <h2 class="display">The Trophy Awaits</h2>
       <p>The world is watching. The road is open. Welcome to $FIFA26: one world, one trophy, one movement.</p>
       <div class="hero-actions" style="justify-content: center;">
-        <a class="btn large" href="https://t.me/">Join Telegram</a>
-        <a class="btn large ghost" href="https://x.com/">Follow X</a>
+        <a class="btn large" href="https://t.me/FIFA26BNB">Join Telegram</a>
+        <a class="btn large ghost" href="https://x.com/FIFA26_TOKEN">Follow X</a>
       </div>
     </div>
   </section>
@@ -2188,7 +2054,7 @@
   <footer class="footer">
     <div class="footer-inner container">
       <a class="brand" href="#home" aria-label="$FIFA26 home">
-        <span>$FIFA</span><span class="brand-ball" aria-hidden="true"></span><span>26</span>
+        <span>$FIFA</span><span>26</span>
       </a>
       <div>$FIFA26 is an independent community meme coin with no official affiliation. Do your own research.</div>
       <div class="footer-links">
