@@ -14,8 +14,8 @@
       --surface-2: #10100c;
       --panel: rgb(10 10 7 / 0.86);
       --panel-strong: rgb(5 5 3 / 0.94);
-      --line: rgb(255 199 53 / 0.2);
-      --line-strong: rgb(255 208 73 / 0.54);
+      --line: rgb(128 83 12 / 0.34);
+      --line-strong: rgb(171 111 18 / 0.52);
       --gold: #ffc633;
       --gold-2: #f2a20d;
       --grass: #25c763;
@@ -162,21 +162,6 @@
       line-height: 1;
       text-transform: uppercase;
       white-space: nowrap;
-    }
-
-    .mini-ball {
-      display: inline-grid;
-      place-items: center;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 48%, #161004 0 17%, transparent 18%),
-        conic-gradient(from 18deg, #f4b925 0 14%, #714200 14% 23%, #ffe27a 23% 36%, #1b1304 36% 43%, #f7c739 43% 62%, #684008 62% 74%, #ffd653 74% 100%);
-      box-shadow: 0 0 26px rgb(255 193 36 / 0.62);
-    }
-
-    .mini-ball {
-      width: 18px;
     }
 
     .nav-links {
@@ -716,28 +701,33 @@
 
     .ticker-track {
       display: flex;
+      gap: 0;
       width: max-content;
       animation: ticker 28s linear infinite;
+    }
+
+    .ticker-group {
+      display: flex;
+      flex: 0 0 auto;
     }
 
     .ticker-item {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 15px 24px;
+      padding: 15px 34px;
       color: #eadfbd;
-      font-family: var(--font-comic);
-      font-size: 0.82rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
       font-weight: 900;
+      line-height: 1.45;
       text-transform: uppercase;
       white-space: nowrap;
     }
 
     .ticker-item strong {
       color: var(--gold);
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      letter-spacing: 0;
+      font: inherit;
+      margin-right: 0.34em;
     }
 
     @keyframes ticker {
@@ -845,16 +835,6 @@
       overflow: hidden;
     }
 
-    .stadium-panel::before {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border: 1px solid rgb(255 202 60 / 0.36);
-      border-radius: 50%;
-      box-shadow: 0 0 70px rgb(255 198 51 / 0.22);
-      transform: perspective(600px) rotateX(68deg);
-    }
-
     .stadium-panel .signal {
       position: absolute;
       right: 20px;
@@ -935,6 +915,7 @@
       font-size: 0.98rem;
       font-weight: 900;
       line-height: 1.48;
+      overflow-wrap: anywhere;
     }
 
     .narrative {
@@ -1048,6 +1029,13 @@
       padding: 24px;
     }
 
+    .proof-card.featured {
+      background:
+        radial-gradient(circle at 15% 25%, rgb(37 199 99 / 0.14), transparent 15rem),
+        radial-gradient(circle at 80% 0%, rgb(255 198 51 / 0.16), transparent 16rem),
+        var(--panel-strong);
+    }
+
     .token-arena {
       position: relative;
       display: grid;
@@ -1149,7 +1137,7 @@
 
     .tax-board {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: center;
       min-height: 210px;
       padding: 20px;
@@ -1175,21 +1163,6 @@
       font-family: var(--font-comic);
       font-size: 1.1rem;
       text-transform: uppercase;
-    }
-
-    .tax-versus {
-      display: grid;
-      place-items: center;
-      width: 54px;
-      aspect-ratio: 1;
-      border: 1px solid var(--line-strong);
-      border-radius: 50%;
-      background: rgb(255 198 51 / 0.12);
-      color: var(--gold);
-      font-family: var(--font-comic);
-      font-size: 0.86rem;
-      text-transform: uppercase;
-      box-shadow: 0 0 24px rgb(255 198 51 / 0.18);
     }
 
     .token-play-grid {
@@ -1249,7 +1222,7 @@
 
     .phase-card {
       position: relative;
-      min-height: 410px;
+      min-height: 250px;
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -1261,11 +1234,17 @@
       content: attr(data-phase);
       position: absolute;
       right: -6px;
-      bottom: -15px;
+      top: 18px;
       color: rgb(255 255 255 / 0.05);
       font-family: var(--font-display);
       font-size: 8rem;
       line-height: 1;
+    }
+
+    .phase-card h3,
+    .phase-card ul {
+      position: relative;
+      z-index: 1;
     }
 
     .phase-card h3 {
@@ -1430,34 +1409,6 @@
       line-height: 1.55;
     }
 
-    .footer {
-      position: relative;
-      z-index: 4;
-      border-top: 1px solid var(--line);
-      background: #030403;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 92px;
-      color: var(--muted);
-      font-family: var(--font-comic);
-      font-size: 0.82rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      color: #e4d8b9;
-      font-family: var(--font-comic);
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1605,11 +1556,42 @@
         grid-template-columns: 1fr;
       }
 
-      .tax-versus {
-        width: auto;
-        min-height: 38px;
-        aspect-ratio: auto;
-        border-radius: 8px;
+      .token-arena {
+        gap: 14px;
+        padding: 12px;
+      }
+
+      .token-side {
+        gap: 12px;
+      }
+
+      .tax-board {
+        min-height: auto;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      .tax-box {
+        gap: 6px;
+        padding: 6px 0;
+      }
+
+      .tax-box strong {
+        font-size: clamp(3.5rem, 18vw, 5.1rem);
+      }
+
+      .tax-box span {
+        font-size: 1rem;
+      }
+
+      .tax-board p {
+        max-width: 24ch;
+        margin-inline: auto;
+      }
+
+      .token-play {
+        min-height: auto;
+        padding: 18px;
       }
 
       .hero-actions {
@@ -1661,11 +1643,6 @@
         grid-template-columns: 1fr;
       }
 
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding-block: 24px;
-      }
     }
   </style>
 </head>
@@ -1767,16 +1744,30 @@
 
   <section class="match-ticker" aria-label="Road to glory ticker">
     <div class="ticker-track">
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>48</strong> nations</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Billions</strong> of fans</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>One</strong> trophy</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>KOL</strong> campaigns secured</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Global</strong> community push</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>48</strong> nations</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Billions</strong> of fans</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>One</strong> trophy</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>KOL</strong> campaigns secured</div>
-      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Global</strong> community push</div>
+      <div class="ticker-group">
+        <div class="ticker-item"><strong>48</strong> nations</div>
+        <div class="ticker-item"><strong>Billions</strong> of fans</div>
+        <div class="ticker-item"><strong>One</strong> trophy</div>
+        <div class="ticker-item"><strong>KOL</strong> campaigns secured</div>
+        <div class="ticker-item"><strong>Global</strong> community push</div>
+        <div class="ticker-item"><strong>48</strong> nations</div>
+        <div class="ticker-item"><strong>Billions</strong> of fans</div>
+        <div class="ticker-item"><strong>One</strong> trophy</div>
+        <div class="ticker-item"><strong>KOL</strong> campaigns secured</div>
+        <div class="ticker-item"><strong>Global</strong> community push</div>
+      </div>
+      <div class="ticker-group" aria-hidden="true">
+        <div class="ticker-item"><strong>48</strong> nations</div>
+        <div class="ticker-item"><strong>Billions</strong> of fans</div>
+        <div class="ticker-item"><strong>One</strong> trophy</div>
+        <div class="ticker-item"><strong>KOL</strong> campaigns secured</div>
+        <div class="ticker-item"><strong>Global</strong> community push</div>
+        <div class="ticker-item"><strong>48</strong> nations</div>
+        <div class="ticker-item"><strong>Billions</strong> of fans</div>
+        <div class="ticker-item"><strong>One</strong> trophy</div>
+        <div class="ticker-item"><strong>KOL</strong> campaigns secured</div>
+        <div class="ticker-item"><strong>Global</strong> community push</div>
+      </div>
     </div>
   </section>
 
@@ -1901,6 +1892,14 @@
       </div>
 
       <div class="proof-grid">
+        <article class="proof-card featured">
+          <h3>$8M ATH market cap</h3>
+          <p>$BEZO reached an $8M ATH and gave the team live campaign experience. CA: 7gsdvvoREQbKesWJCDCb8reeM65yQuQDwT2jcH1JUG9V</p>
+        </article>
+        <article class="proof-card featured">
+          <h3>$6.5M ATH market cap</h3>
+          <p>$LILY reached a $6.5M ATH before the team brought the playbook to $FIFA26. CA: 26d8NQ7QGtYvXy6qG573LwcCxqvqbLcCPUW2GWXApump</p>
+        </article>
         <article class="proof-card">
           <h3>KOL campaigns secured</h3>
           <p>Creator reach, social pushes, and community coordination are prepared before the main whistle.</p>
@@ -1937,7 +1936,6 @@
               <span>Buy Tax</span>
               <p>Fuel for campaign support.</p>
             </div>
-            <div class="tax-versus">vs</div>
             <div class="tax-box">
               <strong>3%</strong>
               <span>Sell Tax</span>
@@ -1946,20 +1944,17 @@
           </article>
 
           <div class="token-play-grid">
-            <article class="token-play" data-call="KO">
-              <strong>Fair</strong>
-              <span>Launch</span>
-              <p>Everyone enters from the opening whistle.</p>
+            <article class="token-play" data-call="65">
+              <strong>65%</strong>
+              <span>Presale</span>
             </article>
-            <article class="token-play" data-call="90">
-              <strong>Long</strong>
-              <span>Marketing Focus</span>
-              <p>Built for the full road, not one match.</p>
+            <article class="token-play" data-call="30">
+              <strong>30%</strong>
+              <span>LP</span>
             </article>
-            <article class="token-play" data-call="ULTRA">
-              <strong>Fan</strong>
-              <span>Driven</span>
-              <p>Raids, chants, match threads, and supporter pushes carry the brand.</p>
+            <article class="token-play" data-call="5">
+              <strong>5%</strong>
+              <span>Marketing</span>
             </article>
           </div>
         </div>
@@ -2050,20 +2045,6 @@
       </div>
     </div>
   </section>
-
-  <footer class="footer">
-    <div class="footer-inner container">
-      <a class="brand" href="#home" aria-label="$FIFA26 home">
-        <span>$FIFA</span><span>26</span>
-      </a>
-      <div>$FIFA26 is an independent community meme coin with no official affiliation. Do your own research.</div>
-      <div class="footer-links">
-        <a href="#why">Why</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#roadmap">Roadmap</a>
-      </div>
-    </div>
-  </footer>
 
   <script>
     const copyButton = document.querySelector("[data-copy]");
