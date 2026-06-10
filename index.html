@@ -3,31 +3,2204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Coming Soon</title>
+  <title>$FIFA26 | The Road To Glory</title>
+  <meta name="description" content="$FIFA26 is a football meme coin community built around the road to the 2026 World Cup.">
   <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
+    @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lilita+One&family=Nunito:wght@700;800;900&display=swap");
+
+    :root {
+      --bg: #030403;
+      --surface: #090907;
+      --surface-2: #10100c;
+      --panel: rgb(10 10 7 / 0.86);
+      --panel-strong: rgb(5 5 3 / 0.94);
+      --line: rgb(255 199 53 / 0.2);
+      --line-strong: rgb(255 208 73 / 0.54);
+      --gold: #ffc633;
+      --gold-2: #f2a20d;
+      --grass: #25c763;
+      --red: #eb3e3e;
+      --text: #fff4d4;
+      --muted: #b9af95;
+      --soft: #756d5d;
+      --ink: #080704;
+      --hero-bg: url("resources/cupimage3.jpg");
+      --hero-players: url("resources/cupimage2-cutout.png");
+      --radius: 12px;
+      --font-display: "Bangers", "Arial Black", Impact, sans-serif;
+      --font-comic: "Lilita One", "Arial Black", system-ui, sans-serif;
+      --font-body: "Nunito", Arial, Helvetica, sans-serif;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      scroll-behavior: smooth;
     }
 
     body {
+      min-height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgb(255 198 51 / 0.16), transparent 28rem),
+        linear-gradient(180deg, #060604 0%, #030403 48%, #000 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(rgb(255 255 255 / 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.54), transparent 74%);
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .display {
+      font-family: var(--font-display);
+      letter-spacing: 0.025em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .site-shell {
+      position: relative;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    .site-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgb(0 0 0 / 0.86) 0%, rgb(0 0 0 / 0.62) 42%, rgb(0 0 0 / 0.28) 68%, rgb(0 0 0 / 0.72) 100%),
+        linear-gradient(180deg, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.18) 52%, #030403 100%),
+        var(--hero-bg),
+        radial-gradient(circle at 50% 38%, #35260c 0%, #090906 52%, #030403 100%);
+      background-size: 100% 100%, 100% 100%, 118% auto, cover;
+      background-position: center, center, 68% center, center;
+      transform: scale(1.02);
+    }
+
+    .site-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 78% 24%, rgb(255 214 90 / 0.08), transparent 18rem),
+        linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.38) 72%, #030403 100%);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgb(255 198 47 / 0.18);
+      background: rgb(2 3 2 / 0.76);
+      backdrop-filter: blur(18px) saturate(145%);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: clamp(1.42rem, 2.4vw, 2rem);
+      letter-spacing: 0.025em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-ball,
+    .mini-ball {
+      display: inline-grid;
+      place-items: center;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 48%, #161004 0 17%, transparent 18%),
+        conic-gradient(from 18deg, #f4b925 0 14%, #714200 14% 23%, #ffe27a 23% 36%, #1b1304 36% 43%, #f7c739 43% 62%, #684008 62% 74%, #ffd653 74% 100%);
+      box-shadow: 0 0 26px rgb(255 193 36 / 0.62);
+    }
+
+    .brand-ball {
+      width: 27px;
+      border: 1px solid rgb(255 238 156 / 0.72);
+    }
+
+    .mini-ball {
+      width: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 1.7vw, 24px);
+      color: #ddd3b6;
+      font-family: var(--font-comic);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-block: 29px 26px;
+      transition: color 180ms ease, text-shadow 180ms ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 16px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transform: scaleX(0.35);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--gold);
+      text-shadow: 0 0 18px rgb(255 198 47 / 0.58);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after,
+    .nav-links a[aria-current="page"]::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn,
+    .menu-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      aspect-ratio: 1;
+      border: 1px solid rgb(255 255 255 / 0.14);
+      border-radius: 8px;
+      background: rgb(255 255 255 / 0.05);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .icon-btn:hover,
+    .menu-btn:hover {
+      border-color: var(--line-strong);
+      background: rgb(255 198 47 / 0.1);
+      transform: translateY(-1px);
+    }
+
+    .telegram-mark {
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 16px solid currentColor;
+      transform: rotate(-24deg);
+    }
+
+    .x-mark {
+      position: relative;
+      width: 15px;
+      height: 15px;
+    }
+
+    .x-mark::before,
+    .x-mark::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 0;
+      width: 2px;
+      height: 16px;
+      background: currentColor;
+      transform: rotate(45deg);
+    }
+
+    .x-mark::after {
+      transform: rotate(-45deg);
+    }
+
+    .menu-toggle {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .menu-btn {
+      display: none;
+      gap: 4px;
+    }
+
+    .menu-btn span {
+      width: 17px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 0;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffe07a 0%, var(--gold) 48%, #d98c08 100%);
+      color: var(--ink);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.42), 0 0 28px rgb(255 189 33 / 0.24);
+      cursor: pointer;
+      font-family: var(--font-comic);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, filter 180ms ease, border-color 180ms ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      filter: brightness(1.07);
+      transform: translateY(-1px);
+    }
+
+    .btn:active,
+    .icon-btn:active,
+    .menu-btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn.small {
+      padding-inline: 20px;
+    }
+
+    .btn.large {
+      min-width: 158px;
+      padding-inline: 24px;
+    }
+
+    .btn.ghost {
+      border: 1px solid rgb(255 255 255 / 0.16);
+      background: rgb(4 4 3 / 0.72);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(390px, 1.06fr);
+      align-items: center;
+      min-height: calc(100dvh - 76px);
+      gap: clamp(24px, 4vw, 58px);
+      padding-block: clamp(20px, 3vw, 34px) clamp(24px, 4vw, 44px);
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      padding-top: 10px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-family: var(--font-comic);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      box-shadow: 0 0 18px rgb(255 198 47 / 0.72);
+    }
+
+    h1 {
+      max-width: 10.5ch;
+      margin: 18px 0 0;
+      font-size: clamp(3.85rem, 7.8vw, 6rem);
+      filter: drop-shadow(0 6px 0 rgb(0 0 0 / 0.5));
+      text-wrap: balance;
+    }
+
+    h1 .gold {
+      display: block;
+      color: var(--gold);
+      text-shadow: 0 0 34px rgb(255 197 47 / 0.42);
+    }
+
+    .hero-subtitle {
+      margin: 18px 0 0;
+      color: #ffe09a;
+      font-family: var(--font-comic);
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      font-weight: 900;
+      line-height: 1.28;
+    }
+
+    .hero-body {
+      max-width: 46ch;
+      margin: 12px 0 0;
+      color: #d7cba9;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 23px;
+    }
+
+    .contract-row {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 10px 12px;
+      border: 1px solid rgb(255 255 255 / 0.1);
+      border-radius: 8px;
+      background: rgb(0 0 0 / 0.54);
+      color: #d9caa7;
+      font-family: var(--font-comic);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .contract-row strong {
+      color: var(--gold);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+    }
+
+    .copy-btn {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      aspect-ratio: 1;
+      border: 1px solid rgb(255 255 255 / 0.16);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .copy-icon {
+      position: relative;
+      width: 13px;
+      height: 13px;
+    }
+
+    .copy-icon::before,
+    .copy-icon::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+    }
+
+    .copy-icon::before {
+      left: 0;
+      top: 3px;
+    }
+
+    .copy-icon::after {
+      right: 0;
+      top: 0;
+      background: rgb(0 0 0 / 0.22);
+    }
+
+    .hero-visual {
+      position: relative;
+      align-self: stretch;
+      min-height: min(560px, calc(100dvh - 122px));
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 18% -15% -3% -24%;
+      z-index: -1;
+      background: transparent;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: -2% -3% 6% -8%;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgb(3 4 3 / 0.92) 0%, rgb(3 4 3 / 0.42) 9%, transparent 24%, transparent 78%, rgb(3 4 3 / 0.34) 91%, rgb(3 4 3 / 0.82) 100%),
+        linear-gradient(180deg, transparent 0%, transparent 68%, rgb(3 4 3 / 0.92) 100%);
+      display: none;
+    }
+
+    .player-stage {
+      position: absolute;
+      inset: -6% -10% 1% -6%;
+      background: var(--hero-players);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center bottom;
+      filter: saturate(1.04) contrast(1.02) drop-shadow(0 30px 58px rgb(0 0 0 / 0.62));
+    }
+
+    .trophy-glow {
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      width: min(30vw, 260px);
+      aspect-ratio: 0.72;
+      transform: translateX(-50%);
+      border-radius: 46% 46% 18% 18%;
+      background:
+        radial-gradient(circle at 50% 16%, #fff1a7 0 6%, transparent 7%),
+        radial-gradient(circle at 50% 26%, #ffd94c 0 18%, #9c5c04 35%, transparent 36%),
+        linear-gradient(90deg, transparent 0 36%, #ffc744 37% 63%, transparent 64%),
+        linear-gradient(180deg, transparent 0 62%, #a76a08 63% 72%, transparent 73%);
+      opacity: 0.5;
+      filter: blur(0.2px) drop-shadow(0 0 36px rgb(255 201 58 / 0.8));
+      mix-blend-mode: screen;
+      display: none;
+    }
+
+    .kit-card {
+      position: absolute;
+      bottom: 24%;
+      width: 130px;
+      min-height: 176px;
+      border: 1px solid rgb(255 255 255 / 0.12);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(0 0 0 / 0.26));
+      box-shadow: 0 24px 60px rgb(0 0 0 / 0.34);
+      opacity: 0.58;
+      display: none;
+    }
+
+    .kit-card::before {
+      content: "";
+      position: absolute;
+      inset: 20px 18px 44px;
+      clip-path: polygon(18% 0, 38% 0, 50% 14%, 62% 0, 82% 0, 100% 24%, 83% 40%, 83% 100%, 17% 100%, 17% 40%, 0 24%);
+      background: var(--kit);
+    }
+
+    .kit-card::after {
+      content: attr(data-no);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 22px;
+      color: rgb(255 255 255 / 0.34);
+      font-family: var(--font-display);
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .kit-portugal {
+      left: 2%;
+      --kit: linear-gradient(90deg, #951c20 0 72%, #164e2e 72%);
+      transform: rotate(-7deg);
+    }
+
+    .kit-argentina {
+      left: 33%;
+      --kit: repeating-linear-gradient(90deg, #e9f7ff 0 24%, #78bde3 24% 43%);
+      opacity: 0.68;
+      transform: translateY(20px);
+    }
+
+    .kit-brazil {
+      right: 2%;
+      --kit: linear-gradient(135deg, #f0d52d 0 64%, #1a8c3d 64%);
+      transform: rotate(7deg);
+    }
+
+    .match-card {
+      position: absolute;
+      right: 4%;
+      bottom: 3%;
+      left: 4%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgb(8 8 5 / 0.82), rgb(2 3 2 / 0.94));
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 0 42px rgb(255 183 30 / 0.24);
+      backdrop-filter: blur(10px);
+      display: none;
+    }
+
+    .team {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 0;
+      color: #f1e9d0;
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.45rem);
+      text-transform: uppercase;
+    }
+
+    .team.right {
+      flex-direction: row-reverse;
+    }
+
+    .team-badge {
+      display: inline-grid;
+      flex: 0 0 auto;
+      place-items: center;
+      width: 44px;
+      aspect-ratio: 1;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 50% 35%, #ffe67a 0 15%, transparent 16%),
+        linear-gradient(135deg, #271904, #916108);
+      color: var(--ink);
+      font-weight: 900;
+      box-shadow: 0 0 24px rgb(255 198 47 / 0.24);
+    }
+
+    .score {
       display: grid;
       place-items: center;
-      background: #ffffff;
-      color: #111111;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    main {
-      font-size: clamp(2.5rem, 8vw, 6rem);
+      min-width: 126px;
+      color: #fff5d5;
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.1rem);
       line-height: 1;
       text-align: center;
-      text-transform: lowercase;
+    }
+
+    .score small {
+      margin-top: 5px;
+      color: var(--gold);
+      font-family: var(--font-comic);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 7px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 14px var(--red);
+    }
+
+    .confetti {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti i {
+      position: absolute;
+      top: -8%;
+      width: 7px;
+      height: 12px;
+      border-radius: 1px;
+      background: var(--gold);
+      opacity: 0.68;
+      animation: fall var(--duration) linear infinite;
+      animation-delay: var(--delay);
+      transform: rotate(var(--rotate));
+    }
+
+    .confetti i:nth-child(2n) {
+      width: 4px;
+      height: 8px;
+      background: #fff0a1;
+    }
+
+    .confetti i:nth-child(3n) {
+      background: #d78308;
+    }
+
+    @keyframes fall {
+      0% {
+        translate: 0 -10%;
+      }
+
+      100% {
+        translate: var(--drift) 118dvh;
+      }
+    }
+
+    .match-ticker {
+      position: relative;
+      z-index: 4;
+      border-block: 1px solid var(--line);
+      background: linear-gradient(90deg, #050503, #141109, #050503);
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 28s linear infinite;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 24px;
+      color: #eadfbd;
+      font-family: var(--font-comic);
+      font-size: 0.82rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-item strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    @keyframes ticker {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .section {
+      position: relative;
+      z-index: 4;
+      padding-block: clamp(64px, 8vw, 112px);
+    }
+
+    .section.compact {
+      padding-block: clamp(44px, 6vw, 76px);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      max-width: 760px;
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+    }
+
+    .section-copy {
+      max-width: 64ch;
+      margin: 0;
+      color: #cfc3a2;
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 1.35vw, 1.12rem);
+      font-weight: 900;
+      line-height: 1.58;
+    }
+
+    .gold-text {
+      color: var(--gold);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .stat-card {
+      min-height: 156px;
+      padding: clamp(20px, 3vw, 28px);
+      background:
+        radial-gradient(circle at 50% 0%, rgb(255 198 51 / 0.11), transparent 72%),
+        var(--panel-strong);
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.9;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 14px;
+      color: #e6d9b7;
+      font-family: var(--font-comic);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(24px, 4vw, 44px);
+      align-items: stretch;
+    }
+
+    .stadium-panel {
+      position: relative;
+      min-height: 480px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgb(0 0 0 / 0.12), rgb(0 0 0 / 0.78)),
+        var(--hero-bg),
+        radial-gradient(circle at 50% 52%, #5f470c 0%, #111108 48%, #050504 100%);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .stadium-panel::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgb(255 202 60 / 0.36);
+      border-radius: 50%;
+      box-shadow: 0 0 70px rgb(255 198 51 / 0.22);
+      transform: perspective(600px) rotateX(68deg);
+    }
+
+    .stadium-panel .signal {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border: 1px solid rgb(255 255 255 / 0.12);
+      border-radius: var(--radius);
+      background: rgb(0 0 0 / 0.68);
+    }
+
+    .signal strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      letter-spacing: 0.025em;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .signal span {
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .reason-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .reason-card,
+    .proof-card,
+    .token-card,
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgb(255 255 255 / 0.045), transparent 45%),
+        var(--panel);
+    }
+
+    .reason-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      padding: 22px;
+    }
+
+    .reason-card .number {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      background: rgb(255 198 51 / 0.12);
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    .reason-card h3,
+    .proof-card h3,
+    .faq-item h3 {
+      margin: 0;
+      color: #fff1c6;
+      font-family: var(--font-comic);
+      font-size: 1.16rem;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .reason-card p,
+    .proof-card p,
+    .faq-item p {
+      margin: 8px 0 0;
+      color: #c9bd9d;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 900;
+      line-height: 1.48;
+    }
+
+    .narrative {
+      border-block: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 72% 50%, rgb(255 198 51 / 0.14), transparent 22rem),
+        linear-gradient(180deg, #060604, #0c0c08);
+    }
+
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .trophy-panel {
+      position: relative;
+      min-height: 540px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 18%, rgb(255 229 124 / 0.44), transparent 10rem),
+        radial-gradient(circle at 50% 60%, rgb(255 198 51 / 0.14), transparent 18rem),
+        #050503;
+    }
+
+    .trophy-panel::before {
+      content: "";
+      position: absolute;
+      top: 44px;
+      left: 50%;
+      width: 230px;
+      height: 420px;
+      transform: translateX(-50%);
+      border-radius: 46% 46% 18% 18%;
+      background:
+        radial-gradient(circle at 50% 16%, #fff3a5 0 6%, transparent 7%),
+        radial-gradient(circle at 50% 26%, #ffd94c 0 18%, #9c5c04 35%, transparent 36%),
+        linear-gradient(90deg, transparent 0 34%, #ffc744 35% 65%, transparent 66%),
+        linear-gradient(180deg, transparent 0 61%, #a76a08 62% 75%, transparent 76%);
+      filter: drop-shadow(0 0 40px rgb(255 198 51 / 0.62));
+    }
+
+    .trophy-panel::after {
+      content: "ROAD TO GLORY";
+      position: absolute;
+      right: 0;
+      bottom: 22px;
+      left: 0;
+      color: rgb(255 244 212 / 0.08);
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 0.85;
+      text-align: center;
+    }
+
+    .narrative-lines {
+      display: grid;
+      gap: 14px;
+    }
+
+    .line-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      border: 1px solid rgb(255 255 255 / 0.08);
+      border-radius: var(--radius);
+      background: rgb(255 255 255 / 0.035);
+      color: #eadfbd;
+      font-family: var(--font-comic);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .line-card span {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.76rem;
+    }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .chant-card {
+      min-height: 240px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 80% 0%, rgb(255 198 51 / 0.16), transparent 13rem),
+        var(--panel-strong);
+    }
+
+    .chant-card strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+      line-height: 0.88;
+      text-transform: uppercase;
+    }
+
+    .chant-card span {
+      display: block;
+      margin-top: 14px;
+      color: #cfc3a2;
+      font-family: var(--font-body);
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proof-card {
+      padding: 24px;
+    }
+
+    .proof-card.big {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 22px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 15% 25%, rgb(37 199 99 / 0.14), transparent 15rem),
+        radial-gradient(circle at 80% 0%, rgb(255 198 51 / 0.16), transparent 16rem),
+        var(--panel-strong);
+    }
+
+    .ath {
+      display: grid;
+      gap: 8px;
+    }
+
+    .ath strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 6vw, 5.6rem);
+      line-height: 0.9;
+    }
+
+    .ath span {
+      color: #e8d9ad;
+      font-family: var(--font-comic);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .token-arena {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 18px;
+      padding: clamp(14px, 2vw, 18px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(ellipse at 28% 10%, rgb(255 198 51 / 0.14), transparent 20rem),
+        radial-gradient(ellipse at 80% 58%, rgb(37 199 99 / 0.1), transparent 18rem),
+        linear-gradient(180deg, rgb(255 255 255 / 0.035), transparent 52%),
+        #060604;
+      overflow: hidden;
+    }
+
+    .token-arena::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      pointer-events: none;
+      border: 1px solid rgb(255 198 51 / 0.14);
+      border-radius: calc(var(--radius) - 2px);
+      background:
+        linear-gradient(90deg, transparent calc(50% - 1px), rgb(255 198 51 / 0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+        radial-gradient(circle at 50% 50%, transparent 0 58px, rgb(255 198 51 / 0.16) 59px 60px, transparent 61px);
+      opacity: 0.7;
+    }
+
+    .supply-board,
+    .tax-board,
+    .token-play {
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgb(255 255 255 / 0.055), transparent 42%),
+        rgb(6 7 5 / 0.88);
+    }
+
+    .supply-board {
+      display: grid;
+      align-content: space-between;
+      min-height: 420px;
+      padding: clamp(24px, 4vw, 38px);
+      overflow: hidden;
+    }
+
+    .supply-board::before {
+      content: "1,000,000,000";
+      position: absolute;
+      right: -12px;
+      bottom: -18px;
+      color: rgb(255 255 255 / 0.045);
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 10vw, 9rem);
+      letter-spacing: 0.02em;
+      line-height: 0.8;
+      white-space: nowrap;
+    }
+
+    .supply-board .mini-ball {
+      width: 54px;
+      border: 1px solid rgb(255 238 156 / 0.5);
+    }
+
+    .supply-board strong {
+      display: block;
+      margin-top: 30px;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(5.4rem, 13vw, 11rem);
+      letter-spacing: 0.02em;
+      line-height: 0.78;
+      text-shadow: 0 0 34px rgb(255 198 51 / 0.28);
+    }
+
+    .supply-board span {
+      display: block;
+      margin-top: 18px;
+      color: #fff1c6;
+      font-family: var(--font-comic);
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .supply-board p,
+    .tax-board p,
+    .token-play p {
+      margin: 10px 0 0;
+      color: #cfc3a2;
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 900;
+      line-height: 1.48;
+    }
+
+    .token-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .tax-board {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 210px;
+      padding: 20px;
+    }
+
+    .tax-box {
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .tax-box strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 7vw, 6.8rem);
+      letter-spacing: 0.02em;
+      line-height: 0.8;
+    }
+
+    .tax-box span {
+      color: #fff1c6;
+      font-family: var(--font-comic);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .tax-versus {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      aspect-ratio: 1;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: rgb(255 198 51 / 0.12);
+      color: var(--gold);
+      font-family: var(--font-comic);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 24px rgb(255 198 51 / 0.18);
+    }
+
+    .token-play-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .token-play {
+      min-height: 196px;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .token-play::after {
+      content: attr(data-call);
+      position: absolute;
+      right: 12px;
+      bottom: -8px;
+      color: rgb(255 255 255 / 0.055);
+      font-family: var(--font-display);
+      font-size: 4.2rem;
+      line-height: 0.8;
+    }
+
+    .token-play strong {
+      display: block;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      letter-spacing: 0.02em;
+      line-height: 0.82;
+    }
+
+    .token-play span {
+      display: block;
+      margin-top: 10px;
+      color: #fff1c6;
+      font-family: var(--font-comic);
+      font-size: 1.04rem;
+      text-transform: uppercase;
+    }
+
+    .roadmap {
+      background:
+        radial-gradient(circle at 22% 36%, rgb(37 199 99 / 0.11), transparent 22rem),
+        radial-gradient(circle at 78% 28%, rgb(255 198 51 / 0.12), transparent 21rem),
+        #050503;
+      border-block: 1px solid var(--line);
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .phase-card {
+      position: relative;
+      min-height: 410px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .phase-card::before {
+      content: attr(data-phase);
+      position: absolute;
+      right: -6px;
+      bottom: -15px;
+      color: rgb(255 255 255 / 0.05);
+      font-family: var(--font-display);
+      font-size: 8rem;
+      line-height: 1;
+    }
+
+    .phase-card h3 {
+      margin: 0;
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .phase-card ul,
+    .fan-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .phase-card li,
+    .fan-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: #e9dfc3;
+      font-family: var(--font-comic);
+      font-weight: 800;
+      line-height: 1.36;
+    }
+
+    .phase-card li::before,
+    .fan-list li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 9px;
+      aspect-ratio: 1;
+      margin-top: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px rgb(255 198 51 / 0.72);
+    }
+
+    .fan-zone-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .countdown-card,
+    .locker-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgb(255 255 255 / 0.04), transparent 54%),
+        var(--panel-strong);
+    }
+
+    .countdown-card {
+      padding: 28px;
+    }
+
+    .countdown-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .time-cell {
+      display: grid;
+      place-items: center;
+      min-height: 112px;
+      border: 1px solid rgb(255 255 255 / 0.1);
+      border-radius: var(--radius);
+      background: rgb(255 255 255 / 0.035);
+      text-align: center;
+    }
+
+    .time-cell strong {
+      color: var(--gold);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 0.9;
+    }
+
+    .time-cell span {
+      color: var(--muted);
+      font-family: var(--font-comic);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .locker-card {
+      padding: 28px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .social-tile {
+      display: grid;
+      place-items: center;
+      min-height: 74px;
+      border: 1px solid rgb(255 255 255 / 0.1);
+      border-radius: var(--radius);
+      background: rgb(255 255 255 / 0.04);
+      color: #e9dfc3;
+      font-family: var(--font-comic);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .social-tile:hover {
+      border-color: var(--line-strong);
+      background: rgb(255 198 51 / 0.1);
+      transform: translateY(-1px);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 22px;
+    }
+
+    .final-cta {
+      position: relative;
+      z-index: 4;
+      padding-block: clamp(70px, 10vw, 128px);
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 40%, rgb(255 198 51 / 0.19), transparent 22rem),
+        linear-gradient(180deg, #030403, #080805);
+    }
+
+    .final-cta h2 {
+      max-width: 10ch;
+      margin: 0 auto;
+      font-size: clamp(3.4rem, 8vw, 7rem);
+    }
+
+    .final-cta p {
+      max-width: 54ch;
+      margin: 20px auto 0;
+      color: #cfc3a2;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 900;
+      line-height: 1.55;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 4;
+      border-top: 1px solid var(--line);
+      background: #030403;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 92px;
+      color: var(--muted);
+      font-family: var(--font-comic);
+      font-size: 0.82rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: #e4d8b9;
+      font-family: var(--font-comic);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    @media (max-width: 1050px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .proof-grid,
+      .roadmap-grid,
+      .culture-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-card.big {
+        grid-column: auto;
+      }
+
+      .token-arena {
+        grid-template-columns: 1fr;
+      }
+
+      .supply-board {
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .container {
+        width: min(100% - 28px, 760px);
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .menu-btn {
+        display: inline-grid;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        right: 14px;
+        left: 14px;
+        display: grid;
+        gap: 0;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgb(3 3 2 / 0.97);
+        box-shadow: 0 18px 40px rgb(0 0 0 / 0.48);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .nav-links a {
+        padding: 15px 12px;
+        border-radius: 8px;
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .nav-links a:hover {
+        background: rgb(255 198 47 / 0.08);
+      }
+
+      .menu-toggle:checked ~ .nav-links {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .icon-btn {
+        display: none;
+      }
+
+      .hero,
+      .why-grid,
+      .narrative-grid,
+      .fan-zone-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-block: 42px 36px;
+      }
+
+      h1 {
+        max-width: 8.4ch;
+        font-size: clamp(4rem, 18vw, 7rem);
+      }
+
+      .hero-body {
+        max-width: 54ch;
+      }
+
+      .hero-visual {
+        min-height: clamp(410px, 74vw, 620px);
+      }
+
+      .player-stage {
+        inset: -4% -16% 10%;
+      }
+
+      .stadium-panel,
+      .trophy-panel {
+        min-height: 420px;
+      }
+
+      .proof-card.big {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .btn.small {
+        display: none;
+      }
+
+      .hero-actions,
+      .countdown-row,
+      .social-grid,
+      .faq-grid,
+      .stats-grid,
+      .tax-board,
+      .token-play-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tax-versus {
+        width: auto;
+        min-height: 38px;
+        aspect-ratio: auto;
+        border-radius: 8px;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .btn.large,
+      .contract-row {
+        width: 100%;
+      }
+
+      .contract-row {
+        justify-content: space-between;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .kit-card {
+        width: 92px;
+        min-height: 132px;
+      }
+
+      .kit-card::after {
+        font-size: 2.2rem;
+      }
+
+      .match-card {
+        left: 0;
+        right: 0;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .team,
+      .team.right {
+        flex-direction: row;
+      }
+
+      .score {
+        order: -1;
+        min-width: 0;
+        font-size: 3.25rem;
+      }
+
+      .reason-card {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-block: 24px;
+      }
     }
   </style>
 </head>
 <body>
-  <main>coming soon</main>
+  <div class="site-shell">
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="$FIFA26 home">
+          <span>$FIFA</span><span class="brand-ball" aria-hidden="true"></span><span>26</span>
+        </a>
+
+        <input class="menu-toggle" id="menu-toggle" type="checkbox">
+        <div class="nav-links">
+          <a href="#home" aria-current="page">Home</a>
+          <a href="#why">Why</a>
+          <a href="#culture">Culture</a>
+          <a href="#team">Team</a>
+          <a href="#tokenomics">Tokenomics</a>
+          <a href="#roadmap">Roadmap</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="header-actions">
+          <a class="icon-btn" href="https://t.me/" aria-label="Open Telegram">
+            <span class="telegram-mark" aria-hidden="true"></span>
+          </a>
+          <a class="icon-btn" href="https://x.com/" aria-label="Open X">
+            <span class="x-mark" aria-hidden="true"></span>
+          </a>
+          <a class="btn small" href="#buy">Buy $FIFA26</a>
+          <label class="menu-btn" for="menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+      </nav>
+    </header>
+
+    <div class="confetti" aria-hidden="true">
+      <i style="left: 6%; --duration: 8.4s; --delay: -2s; --drift: 44px; --rotate: 21deg;"></i>
+      <i style="left: 14%; --duration: 10s; --delay: -5s; --drift: -22px; --rotate: 78deg;"></i>
+      <i style="left: 24%; --duration: 7.6s; --delay: -1s; --drift: 30px; --rotate: 9deg;"></i>
+      <i style="left: 37%; --duration: 11s; --delay: -7s; --drift: -50px; --rotate: 110deg;"></i>
+      <i style="left: 48%; --duration: 8.8s; --delay: -3s; --drift: 28px; --rotate: 42deg;"></i>
+      <i style="left: 59%; --duration: 9.2s; --delay: -6s; --drift: -36px; --rotate: 64deg;"></i>
+      <i style="left: 68%; --duration: 7.9s; --delay: -2s; --drift: 24px; --rotate: 31deg;"></i>
+      <i style="left: 78%; --duration: 10.6s; --delay: -8s; --drift: -42px; --rotate: 98deg;"></i>
+      <i style="left: 89%; --duration: 8.2s; --delay: -4s; --drift: 34px; --rotate: 53deg;"></i>
+      <i style="left: 96%; --duration: 9.8s; --delay: -1s; --drift: -18px; --rotate: 12deg;"></i>
+    </div>
+
+    <main id="home" class="hero container">
+      <section class="hero-copy" aria-labelledby="hero-title">
+        <div class="kicker">The Road To Glory</div>
+        <h1 id="hero-title" class="display">
+          48 Nations <span class="gold">One Trophy</span>
+        </h1>
+        <p class="hero-subtitle">Billions of fans are watching the road to 2026 begin.</p>
+        <p class="hero-body">$FIFA26 turns qualification drama, rivalries, upsets, and match-day noise into one global football meme coin movement.</p>
+
+        <div class="hero-actions">
+          <a class="btn large" href="#buy">Buy $FIFA26</a>
+          <a class="btn large ghost" href="#roadmap">View Roadmap</a>
+        </div>
+
+        <div class="contract-row" aria-label="Contract address">
+          <strong>CA:</strong>
+          <span id="contract">Coming at launch</span>
+          <button class="copy-btn" type="button" aria-label="Copy contract address" data-copy="Coming at launch">
+            <span class="copy-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="hero-visual" aria-label="World Cup hero scene">
+        <div class="trophy-glow" aria-hidden="true"></div>
+        <div class="player-stage" aria-hidden="true"></div>
+        <div class="kit-card kit-portugal" data-no="7" aria-hidden="true"></div>
+        <div class="kit-card kit-argentina" data-no="10" aria-hidden="true"></div>
+        <div class="kit-card kit-brazil" data-no="10" aria-hidden="true"></div>
+
+        <aside class="match-card" aria-label="Featured community match">
+          <div class="team">
+            <span class="team-badge">26</span>
+            <span>FIFA26 FC</span>
+          </div>
+          <div class="score">
+            3 : 0
+            <small><span class="live-dot">Road live</span></small>
+          </div>
+          <div class="team right">
+            <span class="team-badge">W</span>
+            <span>World XI</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <section class="match-ticker" aria-label="Road to glory ticker">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>48</strong> nations</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Billions</strong> of fans</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>One</strong> trophy</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>KOL</strong> campaigns secured</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Global</strong> community push</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>48</strong> nations</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Billions</strong> of fans</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>One</strong> trophy</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>KOL</strong> campaigns secured</div>
+      <div class="ticker-item"><span class="mini-ball" aria-hidden="true"></span><strong>Global</strong> community push</div>
+    </div>
+  </section>
+
+  <section class="section compact">
+    <div class="container">
+      <div class="stats-grid" aria-label="$FIFA26 headline numbers">
+        <div class="stat-card">
+          <strong>48</strong>
+          <span>Nations on the road</span>
+        </div>
+        <div class="stat-card">
+          <strong>1B+</strong>
+          <span>Fan attention cycle</span>
+        </div>
+        <div class="stat-card">
+          <strong>3%</strong>
+          <span>Buy tax</span>
+        </div>
+        <div class="stat-card">
+          <strong>3%</strong>
+          <span>Sell tax</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Why $FIFA26</span>
+        <h2 class="section-title display">The World Is Already Warming Up</h2>
+        <p class="section-copy">The World Cup is bigger than a tournament. Supporters follow every qualifier, every headline, every rivalry, and every upset. $FIFA26 gives that attention a home before the opening whistle.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="stadium-panel" aria-label="Golden stadium field">
+          <div class="signal">
+            <strong>Attention compounds</strong>
+            <span>Every qualification match creates another reason for fans to talk, post, argue, predict, and join the movement.</span>
+          </div>
+        </div>
+
+        <div class="reason-list">
+          <article class="reason-card">
+            <span class="number">01</span>
+            <div>
+              <h3>The biggest sports story on Earth</h3>
+              <p>Football owns a global attention window that no niche trend can fake. $FIFA26 rides the road to that stage.</p>
+            </div>
+          </article>
+          <article class="reason-card">
+            <span class="number">02</span>
+            <div>
+              <h3>A clean community banner</h3>
+              <p>One token. One chant. One shared obsession for supporters who want the tournament energy early.</p>
+            </div>
+          </article>
+          <article class="reason-card">
+            <span class="number">03</span>
+            <div>
+              <h3>Built for match-day culture</h3>
+              <p>Memes, raids, prediction threads, supporter battles, and countdown events give the community constant fuel.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section narrative">
+    <div class="container narrative-grid">
+      <div>
+        <div class="section-head">
+          <span class="kicker">The Narrative</span>
+          <h2 class="section-title display">Football Runs On Belief</h2>
+          <p class="section-copy">$FIFA26 represents the wait, the noise, the pressure, and the dream every supporter knows: lift the trophy, silence the doubters, bring glory home.</p>
+        </div>
+
+        <div class="narrative-lines" aria-label="Narrative beats">
+          <div class="line-card"><span>1</span> The countdown</div>
+          <div class="line-card"><span>2</span> The rivalries</div>
+          <div class="line-card"><span>3</span> The upsets</div>
+          <div class="line-card"><span>4</span> The glory</div>
+        </div>
+      </div>
+
+      <div class="trophy-panel" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section id="culture" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Community Culture</span>
+        <h2 class="section-title display">Supporters, Captains, Hat Tricks</h2>
+        <p class="section-copy">The language matters. $FIFA26 speaks like football fans speak: loud, tribal, stubborn, and ready for extra time.</p>
+      </div>
+
+      <div class="culture-grid">
+        <article class="chant-card">
+          <strong>We are supporters</strong>
+          <span>No quiet holder language. The community shows up like a home crowd.</span>
+        </article>
+        <article class="chant-card">
+          <strong>We are captains</strong>
+          <span>Every wallet can lead a raid, start a chant, and bring new fans into the stand.</span>
+        </article>
+        <article class="chant-card">
+          <strong>We score hat tricks</strong>
+          <span>Memes, volume, and visibility. Three chances to put the ball in the net.</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section compact">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Proven Team</span>
+        <h2 class="section-title display">Experience Back On The Pitch</h2>
+        <p class="section-copy">The team behind $FIFA26 returns with campaign experience, prepared marketing, and a network ready for a bigger football narrative.</p>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card big">
+          <div class="ath">
+            <strong>3000x</strong>
+            <span>$BEZO previous project</span>
+          </div>
+          <div>
+            <h3>$8M ATH market cap</h3>
+            <p>A previous run gave the team live experience across community growth, visibility pushes, and market momentum.</p>
+          </div>
+        </article>
+        <article class="proof-card">
+          <div class="ath">
+            <strong>1300x</strong>
+            <span>$LILY previous project</span>
+          </div>
+          <h3>$6.5M ATH market cap</h3>
+          <p>The playbook now returns with a larger football story and a louder audience.</p>
+        </article>
+        <article class="proof-card">
+          <h3>KOL campaigns secured</h3>
+          <p>Creator reach, social pushes, and community coordination are prepared before the main whistle.</p>
+        </article>
+        <article class="proof-card">
+          <h3>Marketing team prepared</h3>
+          <p>The launch is built around sustained attention, not a single noisy day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokenomics" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Tokenomics</span>
+        <h2 class="section-title display">Simple Numbers, Clear Game Plan</h2>
+        <p class="section-copy">A fair launch, a fixed supply, and a long-term marketing focus keep the mechanics easy for new supporters to understand.</p>
+      </div>
+
+      <div class="token-arena">
+        <article class="supply-board">
+          <div>
+            <span class="mini-ball" aria-hidden="true"></span>
+            <strong>1B</strong>
+            <span>Total Supply</span>
+            <p>1,000,000,000 $FIFA26 tokens ready for the road to glory.</p>
+          </div>
+        </article>
+
+        <div class="token-side">
+          <article class="tax-board" aria-label="Buy and sell tax">
+            <div class="tax-box">
+              <strong>3%</strong>
+              <span>Buy Tax</span>
+              <p>Fuel for campaign support.</p>
+            </div>
+            <div class="tax-versus">vs</div>
+            <div class="tax-box">
+              <strong>3%</strong>
+              <span>Sell Tax</span>
+              <p>Balanced for the same playbook.</p>
+            </div>
+          </article>
+
+          <div class="token-play-grid">
+            <article class="token-play" data-call="KO">
+              <strong>Fair</strong>
+              <span>Launch</span>
+              <p>Everyone enters from the opening whistle.</p>
+            </article>
+            <article class="token-play" data-call="90">
+              <strong>Long</strong>
+              <span>Marketing Focus</span>
+              <p>Built for the full road, not one match.</p>
+            </article>
+            <article class="token-play" data-call="ULTRA">
+              <strong>Fan</strong>
+              <span>Driven</span>
+              <p>Raids, chants, match threads, and supporter pushes carry the brand.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="section roadmap">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Roadmap</span>
+        <h2 class="section-title display">Three Phases To The Final</h2>
+        <p class="section-copy">The plan follows the shape of a tournament: build the crowd, push the campaign, then turn the countdown into a global event.</p>
+      </div>
+
+      <div class="roadmap-grid">
+        <article class="phase-card" data-phase="01">
+          <h3>Phase 1</h3>
+          <ul>
+            <li>Community building</li>
+            <li>Fair launch</li>
+            <li>KOL campaigns</li>
+            <li>Social media expansion</li>
+          </ul>
+        </article>
+        <article class="phase-card" data-phase="02">
+          <h3>Phase 2</h3>
+          <ul>
+            <li>Global marketing push</li>
+            <li>Football influencer partnerships</li>
+            <li>Community competitions</li>
+            <li>Trending campaigns</li>
+          </ul>
+        </article>
+        <article class="phase-card" data-phase="03">
+          <h3>Phase 3</h3>
+          <ul>
+            <li>World Cup countdown events</li>
+            <li>Major partnerships</li>
+            <li>Massive exposure campaigns</li>
+            <li>Road to glory</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="fan-zone" class="section">
+    <div class="container fan-zone-grid">
+      <article class="countdown-card">
+        <span class="kicker">Fan Zone</span>
+        <h2 class="section-title display">Opening Whistle Loading</h2>
+        <p class="section-copy">The countdown starts with the community. Every qualifier, raid, meme, and fan battle brings more noise to the stand.</p>
+        <div class="countdown-row" aria-label="Countdown campaign milestones">
+          <div class="time-cell"><div><strong>48</strong><span>Nations</span></div></div>
+          <div class="time-cell"><div><strong>104</strong><span>Matches</span></div></div>
+          <div class="time-cell"><div><strong>16</strong><span>Host cities</span></div></div>
+          <div class="time-cell"><div><strong>1</strong><span>Trophy</span></div></div>
+        </div>
+      </article>
+
+      <aside class="locker-card">
+        <span class="kicker">Locker Room</span>
+        <h2 class="section-title display">Join The Squad</h2>
+        <ul class="fan-list">
+          <li>Raid match-day posts with the community.</li>
+          <li>Share predictions before major qualifiers.</li>
+          <li>Bring football memes into every timeline.</li>
+          <li>Push $FIFA26 under one global banner.</li>
+        </ul>
+        <div class="social-grid">
+          <a class="social-tile" href="https://t.me/">Telegram</a>
+          <a class="social-tile" href="https://x.com/">X</a>
+          <a class="social-tile" href="#buy">Buy</a>
+          <a class="social-tile" href="#tokenomics">Chart</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="faq" class="section compact">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2 class="section-title display">Before Kickoff</h2>
+        <p class="section-copy">Quick answers for new supporters joining the stand.</p>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>Is $FIFA26 official?</h3>
+          <p>No. $FIFA26 is an independent community meme coin and has no affiliation with FIFA or any official tournament organizer.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What is $FIFA26?</h3>
+          <p>$FIFA26 is a football meme coin community built around the road to the 2026 World Cup.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What makes the narrative strong?</h3>
+          <p>The World Cup attention cycle grows through qualifiers, rivalries, national pride, and global headlines.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What is the token supply?</h3>
+          <p>Total supply is 1,000,000,000 $FIFA26 tokens.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How does the community grow?</h3>
+          <p>KOL campaigns, football influencer partnerships, social media expansion, competitions, and countdown events.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="buy" class="final-cta">
+    <div class="container">
+      <h2 class="display">The Trophy Awaits</h2>
+      <p>The world is watching. The road is open. Welcome to $FIFA26: one world, one trophy, one movement.</p>
+      <div class="hero-actions" style="justify-content: center;">
+        <a class="btn large" href="https://t.me/">Join Telegram</a>
+        <a class="btn large ghost" href="https://x.com/">Follow X</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner container">
+      <a class="brand" href="#home" aria-label="$FIFA26 home">
+        <span>$FIFA</span><span class="brand-ball" aria-hidden="true"></span><span>26</span>
+      </a>
+      <div>$FIFA26 is an independent community meme coin with no official affiliation. Do your own research.</div>
+      <div class="footer-links">
+        <a href="#why">Why</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const copyButton = document.querySelector("[data-copy]");
+
+    copyButton?.addEventListener("click", async () => {
+      const value = copyButton.getAttribute("data-copy");
+
+      if (!value) {
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(value);
+        copyButton.textContent = "Copied";
+        window.setTimeout(() => {
+          copyButton.innerHTML = '<span class="copy-icon" aria-hidden="true"></span>';
+        }, 1200);
+      } catch {
+        copyButton.textContent = "Copy";
+      }
+    });
+  </script>
 </body>
 </html>
