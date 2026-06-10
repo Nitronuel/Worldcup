@@ -41,6 +41,7 @@
       min-height: 100%;
       background: var(--bg);
       scroll-behavior: smooth;
+      scroll-padding-top: 92px;
     }
 
     body {
@@ -103,6 +104,7 @@
       position: relative;
       min-height: 100dvh;
       overflow: hidden;
+      padding-top: 76px;
     }
 
     .site-shell::before {
@@ -132,9 +134,11 @@
     }
 
     .site-header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 20;
+      left: 0;
+      right: 0;
+      z-index: 50;
       border-bottom: 1px solid rgb(255 198 47 / 0.18);
       background: rgb(2 3 2 / 0.76);
       backdrop-filter: blur(18px) saturate(145%);
@@ -682,16 +686,17 @@
     }
 
     .confetti {
-      position: absolute;
+      position: fixed;
       inset: 0;
       z-index: 2;
       pointer-events: none;
       overflow: hidden;
+      height: 100dvh;
     }
 
     .confetti i {
       position: absolute;
-      top: -8%;
+      top: -24px;
       width: 7px;
       height: 12px;
       border-radius: 1px;
@@ -714,11 +719,11 @@
 
     @keyframes fall {
       0% {
-        translate: 0 -10%;
+        translate: 0 0;
       }
 
       100% {
-        translate: var(--drift) 118dvh;
+        translate: var(--drift) calc(100dvh + 48px);
       }
     }
 
@@ -766,6 +771,7 @@
       position: relative;
       z-index: 4;
       padding-block: clamp(64px, 8vw, 112px);
+      scroll-margin-top: 92px;
     }
 
     .section.compact {
@@ -1561,8 +1567,20 @@
     }
 
     @media (max-width: 980px) {
+      html {
+        scroll-padding-top: 84px;
+      }
+
       .container {
         width: min(100% - 28px, 760px);
+      }
+
+      .site-shell {
+        padding-top: 68px;
+      }
+
+      .section {
+        scroll-margin-top: 84px;
       }
 
       .nav {
