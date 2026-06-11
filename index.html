@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$FIFA26 | The Road To Glory</title>
   <meta name="description" content="$FIFA26 is a football meme coin community built around the road to the 2026 World Cup.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="resources/cupimage3.webp" as="image" type="image/webp">
+  <link rel="preload" href="resources/cupimage2-cutout.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Lilita+One&family=Nunito:wght@700;800;900&display=swap">
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Lilita+One&family=Nunito:wght@700;800;900&display=swap");
-
     :root {
       --bg: #030403;
       --surface: #090907;
@@ -24,8 +27,8 @@
       --muted: #b9af95;
       --soft: #756d5d;
       --ink: #080704;
-      --hero-bg: url("resources/cupimage3.jpg");
-      --hero-players: url("resources/cupimage2-cutout.png");
+      --hero-bg: image-set(url("resources/cupimage3.webp") type("image/webp"), url("resources/cupimage3.jpg") type("image/jpeg"));
+      --hero-players: image-set(url("resources/cupimage2-cutout.webp") type("image/webp"), url("resources/cupimage2-cutout.png") type("image/png"));
       --radius: 12px;
       --font-display: "Bangers", "Arial Black", Impact, sans-serif;
       --font-comic: "Lilita One", "Arial Black", system-ui, sans-serif;
@@ -764,7 +767,15 @@
       border-radius: var(--radius);
       background:
         linear-gradient(180deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.28)),
-        url("resources/fans image.png");
+        radial-gradient(circle at 50% 52%, #5f470c 0%, #111108 48%, #050504 100%);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .trophy-panel.is-bg-loaded {
+      background:
+        linear-gradient(180deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.28)),
+        image-set(url("resources/fans-image.webp") type("image/webp"), url("resources/fans image.png") type("image/png"));
       background-size: cover;
       background-position: center;
     }
@@ -1358,6 +1369,23 @@
         display: none;
       }
 
+      body::before {
+        display: none;
+      }
+
+      .site-header {
+        background: rgb(2 3 2 / 0.94);
+        backdrop-filter: none;
+      }
+
+      .player-stage {
+        filter: saturate(1.02) contrast(1.01) drop-shadow(0 22px 36px rgb(0 0 0 / 0.54));
+      }
+
+      .confetti i:nth-child(n+7) {
+        display: none;
+      }
+
       .hero-actions {
         grid-template-columns: 1fr;
       }
@@ -1908,6 +1936,7 @@
     const siteHeader = document.querySelector(".site-header");
     const menuToggle = document.querySelector("#menu-toggle");
     const navLinks = document.querySelectorAll(".nav-links a");
+    const lazyTrophyPanel = document.querySelector(".trophy-panel");
 
     copyButton?.addEventListener("click", async () => {
       const value = copyButton.getAttribute("data-copy");
@@ -1942,6 +1971,23 @@
         }
       });
     });
+
+    if (lazyTrophyPanel && "IntersectionObserver" in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          lazyTrophyPanel.classList.add("is-bg-loaded");
+          observer.disconnect();
+        });
+      }, { rootMargin: "240px" });
+
+      imageObserver.observe(lazyTrophyPanel);
+    } else {
+      lazyTrophyPanel?.classList.add("is-bg-loaded");
+    }
   </script>
 </body>
 </html>
