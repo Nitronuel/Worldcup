@@ -463,25 +463,6 @@
       min-height: min(560px, calc(100dvh - 122px));
     }
 
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 18% -15% -3% -24%;
-      z-index: -1;
-      background: transparent;
-    }
-
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      inset: -2% -3% 6% -8%;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgb(3 4 3 / 0.92) 0%, rgb(3 4 3 / 0.42) 9%, transparent 24%, transparent 78%, rgb(3 4 3 / 0.34) 91%, rgb(3 4 3 / 0.82) 100%),
-        linear-gradient(180deg, transparent 0%, transparent 68%, rgb(3 4 3 / 0.92) 100%);
-      display: none;
-    }
-
     .player-stage {
       position: absolute;
       inset: -6% -10% 1% -6%;
@@ -490,163 +471,6 @@
       background-size: contain;
       background-position: center bottom;
       filter: saturate(1.04) contrast(1.02) drop-shadow(0 30px 58px rgb(0 0 0 / 0.62));
-    }
-
-    .trophy-glow {
-      position: absolute;
-      top: 2%;
-      left: 50%;
-      width: min(30vw, 260px);
-      aspect-ratio: 0.72;
-      transform: translateX(-50%);
-      border-radius: 46% 46% 18% 18%;
-      background:
-        radial-gradient(circle at 50% 16%, #fff1a7 0 6%, transparent 7%),
-        radial-gradient(circle at 50% 26%, #ffd94c 0 18%, #9c5c04 35%, transparent 36%),
-        linear-gradient(90deg, transparent 0 36%, #ffc744 37% 63%, transparent 64%),
-        linear-gradient(180deg, transparent 0 62%, #a76a08 63% 72%, transparent 73%);
-      opacity: 0.5;
-      filter: blur(0.2px) drop-shadow(0 0 36px rgb(255 201 58 / 0.8));
-      mix-blend-mode: screen;
-      display: none;
-    }
-
-    .kit-card {
-      position: absolute;
-      bottom: 24%;
-      width: 130px;
-      min-height: 176px;
-      border: 1px solid rgb(255 255 255 / 0.12);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(0 0 0 / 0.26));
-      box-shadow: 0 24px 60px rgb(0 0 0 / 0.34);
-      opacity: 0.58;
-      display: none;
-    }
-
-    .kit-card::before {
-      content: "";
-      position: absolute;
-      inset: 20px 18px 44px;
-      clip-path: polygon(18% 0, 38% 0, 50% 14%, 62% 0, 82% 0, 100% 24%, 83% 40%, 83% 100%, 17% 100%, 17% 40%, 0 24%);
-      background: var(--kit);
-    }
-
-    .kit-card::after {
-      content: attr(data-no);
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 22px;
-      color: rgb(255 255 255 / 0.34);
-      font-family: var(--font-display);
-      font-size: 3rem;
-      text-align: center;
-    }
-
-    .kit-portugal {
-      left: 2%;
-      --kit: linear-gradient(90deg, #951c20 0 72%, #164e2e 72%);
-      transform: rotate(-7deg);
-    }
-
-    .kit-argentina {
-      left: 33%;
-      --kit: repeating-linear-gradient(90deg, #e9f7ff 0 24%, #78bde3 24% 43%);
-      opacity: 0.68;
-      transform: translateY(20px);
-    }
-
-    .kit-brazil {
-      right: 2%;
-      --kit: linear-gradient(135deg, #f0d52d 0 64%, #1a8c3d 64%);
-      transform: rotate(7deg);
-    }
-
-    .match-card {
-      position: absolute;
-      right: 4%;
-      bottom: 3%;
-      left: 4%;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      align-items: center;
-      gap: 16px;
-      padding: 17px 18px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgb(8 8 5 / 0.82), rgb(2 3 2 / 0.94));
-      box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 0 42px rgb(255 183 30 / 0.24);
-      backdrop-filter: blur(10px);
-      display: none;
-    }
-
-    .team {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      min-width: 0;
-      color: #f1e9d0;
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vw, 1.45rem);
-      text-transform: uppercase;
-    }
-
-    .team.right {
-      flex-direction: row-reverse;
-    }
-
-    .team-badge {
-      display: inline-grid;
-      flex: 0 0 auto;
-      place-items: center;
-      width: 44px;
-      aspect-ratio: 1;
-      border: 1px solid var(--line-strong);
-      border-radius: 10px;
-      background:
-        radial-gradient(circle at 50% 35%, #ffe67a 0 15%, transparent 16%),
-        linear-gradient(135deg, #271904, #916108);
-      color: var(--ink);
-      font-weight: 900;
-      box-shadow: 0 0 24px rgb(255 198 47 / 0.24);
-    }
-
-    .score {
-      display: grid;
-      place-items: center;
-      min-width: 126px;
-      color: #fff5d5;
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 5vw, 4.1rem);
-      line-height: 1;
-      text-align: center;
-    }
-
-    .score small {
-      margin-top: 5px;
-      color: var(--gold);
-      font-family: var(--font-comic);
-      font-size: 0.68rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .live-dot {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .live-dot::before {
-      content: "";
-      width: 7px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 14px var(--red);
     }
 
     .confetti {
@@ -1050,19 +874,6 @@
         linear-gradient(180deg, rgb(255 255 255 / 0.035), transparent 52%),
         #060604;
       overflow: hidden;
-    }
-
-    .token-arena::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      pointer-events: none;
-      border: 1px solid rgb(255 198 51 / 0.14);
-      border-radius: calc(var(--radius) - 2px);
-      background:
-        linear-gradient(90deg, transparent calc(50% - 1px), rgb(255 198 51 / 0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
-        radial-gradient(circle at 50% 50%, transparent 0 58px, rgb(255 198 51 / 0.16) 59px 60px, transparent 61px);
-      opacity: 0.7;
     }
 
     .supply-board,
@@ -1547,13 +1358,44 @@
         display: none;
       }
 
-      .hero-actions,
-      .countdown-row,
-      .social-grid,
-      .stats-grid,
-      .tax-board,
-      .token-play-grid {
+      .hero-actions {
         grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat-card {
+        min-height: 132px;
+        padding: 18px;
+      }
+
+      .stat-card strong {
+        font-size: clamp(2.7rem, 13vw, 4.2rem);
+      }
+
+      .stat-card span {
+        margin-top: 10px;
+        font-size: 0.78rem;
+      }
+
+      .culture-grid {
+        gap: 12px;
+      }
+
+      .chant-card {
+        min-height: auto;
+        padding: 20px;
+      }
+
+      .chant-card strong {
+        font-size: clamp(2.15rem, 10vw, 3.2rem);
+      }
+
+      .chant-card span {
+        margin-top: 10px;
       }
 
       .token-arena {
@@ -1566,32 +1408,94 @@
       }
 
       .tax-board {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         min-height: auto;
-        gap: 14px;
-        padding: 18px;
+        gap: 10px;
+        padding: 16px;
       }
 
       .tax-box {
-        gap: 6px;
+        gap: 5px;
         padding: 6px 0;
       }
 
       .tax-box strong {
-        font-size: clamp(3.5rem, 18vw, 5.1rem);
+        font-size: clamp(3.1rem, 14vw, 4.4rem);
       }
 
       .tax-box span {
-        font-size: 1rem;
+        font-size: 0.86rem;
       }
 
       .tax-board p {
-        max-width: 24ch;
+        max-width: 16ch;
         margin-inline: auto;
+        font-size: 0.78rem;
+        line-height: 1.35;
+      }
+
+      .token-play-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
       }
 
       .token-play {
         min-height: auto;
-        padding: 18px;
+        padding: 14px 10px;
+      }
+
+      .token-play::after {
+        right: 6px;
+        bottom: -4px;
+        font-size: 2.8rem;
+      }
+
+      .token-play strong {
+        font-size: clamp(2.45rem, 10vw, 3.5rem);
+      }
+
+      .token-play span {
+        margin-top: 8px;
+        font-size: 0.76rem;
+        overflow-wrap: anywhere;
+      }
+
+      .countdown-card {
+        padding: 20px;
+      }
+
+      .countdown-row {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .time-cell {
+        min-height: 82px;
+        padding: 8px 4px;
+      }
+
+      .time-cell strong {
+        font-size: clamp(1.9rem, 8vw, 2.8rem);
+      }
+
+      .time-cell span {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.52rem;
+      }
+
+      .social-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .social-tile {
+        min-height: 58px;
+        padding: 8px 4px;
+        font-size: 0.58rem;
+        overflow-wrap: anywhere;
       }
 
       .hero-actions {
@@ -1609,34 +1513,6 @@
 
       .hero-visual {
         min-height: 430px;
-      }
-
-      .kit-card {
-        width: 92px;
-        min-height: 132px;
-      }
-
-      .kit-card::after {
-        font-size: 2.2rem;
-      }
-
-      .match-card {
-        left: 0;
-        right: 0;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 14px;
-      }
-
-      .team,
-      .team.right {
-        flex-direction: row;
-      }
-
-      .score {
-        order: -1;
-        min-width: 0;
-        font-size: 3.25rem;
       }
 
       .reason-card {
@@ -1718,26 +1594,7 @@
       </section>
 
       <section class="hero-visual" aria-label="World Cup hero scene">
-        <div class="trophy-glow" aria-hidden="true"></div>
         <div class="player-stage" aria-hidden="true"></div>
-        <div class="kit-card kit-portugal" data-no="7" aria-hidden="true"></div>
-        <div class="kit-card kit-argentina" data-no="10" aria-hidden="true"></div>
-        <div class="kit-card kit-brazil" data-no="10" aria-hidden="true"></div>
-
-        <aside class="match-card" aria-label="Featured community match">
-          <div class="team">
-            <span class="team-badge">26</span>
-            <span>FIFA26 FC</span>
-          </div>
-          <div class="score">
-            3 : 0
-            <small><span class="live-dot">Road live</span></small>
-          </div>
-          <div class="team right">
-            <span class="team-badge">W</span>
-            <span>World XI</span>
-          </div>
-        </aside>
       </section>
     </main>
   </div>
@@ -2048,6 +1905,9 @@
 
   <script>
     const copyButton = document.querySelector("[data-copy]");
+    const siteHeader = document.querySelector(".site-header");
+    const menuToggle = document.querySelector("#menu-toggle");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
     copyButton?.addEventListener("click", async () => {
       const value = copyButton.getAttribute("data-copy");
@@ -2065,6 +1925,22 @@
       } catch {
         copyButton.textContent = "Copy";
       }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!menuToggle?.checked || siteHeader?.contains(event.target)) {
+        return;
+      }
+
+      menuToggle.checked = false;
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (menuToggle) {
+          menuToggle.checked = false;
+        }
+      });
     });
   </script>
 </body>
