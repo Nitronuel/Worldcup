@@ -421,6 +421,10 @@
       text-transform: uppercase;
     }
 
+    .contract-row span {
+      overflow-wrap: anywhere;
+    }
+
     .copy-btn {
       display: inline-grid;
       place-items: center;
@@ -431,6 +435,7 @@
       background: transparent;
       color: var(--text);
       cursor: pointer;
+      transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
     }
 
     .copy-icon {
@@ -458,6 +463,28 @@
       right: 0;
       top: 0;
       background: rgb(0 0 0 / 0.22);
+    }
+
+    .copy-btn.copied {
+      border-color: rgb(37 199 99 / 0.7);
+      background: rgb(37 199 99 / 0.12);
+      color: var(--grass);
+    }
+
+    .copy-btn.copied .copy-icon::before {
+      left: 1px;
+      top: 1px;
+      width: 12px;
+      height: 7px;
+      border: 0;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      border-radius: 0;
+      transform: rotate(-45deg);
+    }
+
+    .copy-btn.copied .copy-icon::after {
+      display: none;
     }
 
     .hero-visual {
@@ -1614,8 +1641,8 @@
 
         <div class="contract-row" aria-label="Contract address">
           <strong>CA:</strong>
-          <span id="contract">Coming at launch</span>
-          <button class="copy-btn" type="button" aria-label="Copy contract address" data-copy="Coming at launch">
+          <span id="contract">0x356815aC6D4Bb1cEc9eD7B2EDB8F921c06f8B168</span>
+          <button class="copy-btn" type="button" aria-label="Copy contract address" data-copy="0x356815aC6D4Bb1cEc9eD7B2EDB8F921c06f8B168">
             <span class="copy-icon" aria-hidden="true"></span>
           </button>
         </div>
@@ -1829,17 +1856,17 @@
           </article>
 
           <div class="token-play-grid">
-            <article class="token-play" data-call="65">
-              <strong>65%</strong>
+            <article class="token-play" data-call="66">
+              <strong>66%</strong>
               <span>Presale</span>
             </article>
-            <article class="token-play" data-call="30">
-              <strong>30%</strong>
+            <article class="token-play" data-call="33">
+              <strong>33%</strong>
               <span>LP</span>
             </article>
-            <article class="token-play" data-call="5">
-              <strong>5%</strong>
-              <span>Marketing</span>
+            <article class="token-play" data-call="1">
+              <strong>1%</strong>
+              <span>Burn</span>
             </article>
           </div>
         </div>
@@ -1938,21 +1965,41 @@
     const navLinks = document.querySelectorAll(".nav-links a");
     const lazyTrophyPanel = document.querySelector(".trophy-panel");
 
+    const copyText = async (value) => {
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {
+        const textarea = document.createElement("textarea");
+        textarea.value = value;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.top = "-9999px";
+        document.body.append(textarea);
+        textarea.select();
+
+        const copied = document.execCommand("copy");
+        textarea.remove();
+        return copied;
+      }
+    };
+
     copyButton?.addEventListener("click", async () => {
-      const value = copyButton.getAttribute("data-copy");
+      const value = copyButton.dataset.copy || document.querySelector("#contract")?.textContent?.trim();
 
       if (!value) {
         return;
       }
 
-      try {
-        await navigator.clipboard.writeText(value);
-        copyButton.textContent = "Copied";
+      if (await copyText(value)) {
+        copyButton.classList.add("copied");
+        copyButton.setAttribute("aria-label", "Copied contract address");
         window.setTimeout(() => {
-          copyButton.innerHTML = '<span class="copy-icon" aria-hidden="true"></span>';
+          copyButton.classList.remove("copied");
+          copyButton.setAttribute("aria-label", "Copy contract address");
         }, 1200);
-      } catch {
-        copyButton.textContent = "Copy";
+      } else {
+        copyButton.setAttribute("aria-label", "Copy failed");
       }
     });
 
